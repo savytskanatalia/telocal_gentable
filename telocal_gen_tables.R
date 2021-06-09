@@ -24,7 +24,7 @@ library(tidyverse)
 library(data.table)
 library(stringr)
 library(purrr)
-library(gsubfn)
+library(zeallot)
 
 
 #temp = list.files(pattern="*.csv")
@@ -78,6 +78,10 @@ telocal_load<-function(mypath){
   te_sub2<-tel_tab2[,lapply(.SD,sum), by = .(subid),.SDcols=te_sub]
   return(list(te_tab,te_sub2,gene_tab))
 }
+
+# Example 
+
+c(te_tab,te_sub2, gene_tab) %<-% telocal_load(mypath)
 
 
 # Writing the generated output tables to the files.
